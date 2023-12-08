@@ -10,7 +10,7 @@ const Page = () => {
   const dispatch = useDispatch();
 
   const modificarValor = () => {
-    dispatch(setValor1(nuevoValor));
+    //dispatch(setValor1(nuevoValor));
   };
 
   return (
