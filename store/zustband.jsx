@@ -7,7 +7,7 @@ export const useCartStore = create((set, get) => ({
   removeAll: () => set({ cart: 0 }),
 }));*/
 
-import create from "zustand";
+import { create } from "zustand";
 
 export const useCartStore = create((set, get) => ({
   cart: 0,
@@ -23,4 +23,9 @@ export const useCartStore = create((set, get) => ({
   },
   remove: () => set((state) => ({ cart: state.cart - 1 })),
   removeAll: () => set({ cart: 0 }),
+}));
+
+export const useCharactersStore = create((set, get) => ({
+  characters: null,
+  setCharacters: (value) => set({ characters: value }),
 }));

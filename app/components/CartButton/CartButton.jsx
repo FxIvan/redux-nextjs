@@ -1,11 +1,13 @@
 "use client";
 
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
-import { useCartStore } from "components/store/zustband";
+import { useCartStore, useCharactersStore } from "components/store/zustband";
 import Link from "next/link";
 
 export default function CartButton() {
   const { cart } = useCartStore();
+  const characters = useCharactersStore((state) => state.characters);
+
   return (
     <Link
       href="/cart"
@@ -13,6 +15,29 @@ export default function CartButton() {
     >
       <ShoppingCartIcon className="w-6 h-6" strokeWidth={2} />
       <Label item={cart} />
+      <h1>
+        -----------------------------------------HEADER---------------------------------------------------
+      </h1>
+      {characters &&
+        characters.results.length > 0 &&
+        characters.results.map((character) => {
+          return (
+            <div
+              className="flex flex-col items-center justify-center"
+              key={character.id}
+            >
+              <img
+                className="w-1/2"
+                src={character.image}
+                alt={character.name}
+              />
+              <h2 className="text-2xl font-bold">{character.name}</h2>
+            </div>
+          );
+        })}
+      <h1>
+        -----------------------------------------HEADER---------------------------------------------------
+      </h1>
     </Link>
   );
 }
